@@ -3,1127 +3,1046 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Yann Tech • Serviços de TI</title>
-  <meta name="description" content="Yann Tech — Formatação, Office, sites e softwares. Atendimento rápido via WhatsApp." />
+  <title>Yann Tech • Serviços de TI Profissionais</title>
+  <meta name="description" content="Formatação, Office, sites e softwares sob medida. Atendimento rápido via WhatsApp." />
   <meta name="theme-color" content="#0B5FFF" />
 
   <meta property="og:title" content="Yann Tech • Serviços de TI" />
-  <meta property="og:description" content="Atendimento rápido via WhatsApp. Formatação, Office e projetos sob demanda." />
+  <meta property="og:description" content="Soluções profissionais em TI. Formatação, Office e projetos personalizados." />
   <meta property="og:type" content="website" />
 
   <style>
-    :root{
-      /* LIGHT THEME */
-      --bg: #f6f9ff;             /* fundo bem claro */
-      --bg2:#eef4ff;             /* variação azulada */
-      --card: rgba(255,255,255,.86);
-      --card2: rgba(255,255,255,.95);
-      --stroke: rgba(12, 25, 54, .10);
-      --txt: rgba(10, 22, 50, .92);    /* texto escuro */
-      --muted: rgba(10, 22, 50, .66);
+    /* ==================== VARIÁVEIS E RESET ==================== */
+    :root {
+      --bg: #f6f9ff;
+      --bg2: #eef4ff;
+      --card: rgba(255,255,255,.90);
+      --stroke: rgba(12, 25, 54, .08);
+      --txt: rgba(10, 22, 50, .92);
+      --txt-light: rgba(10, 22, 50, .66);
 
-      --brand: #0B5FFF;          /* azul principal */
-      --brand2:#06B6D4;          /* ciano de apoio */
-      --ok: #16a34a;             /* verde */
-      --warn: #f59e0b;           /* amarelo */
-      --shadow: 0 22px 70px rgba(12, 25, 54, .14);
+      --brand: #0B5FFF;
+      --brand-light: #3d7fff;
+      --accent: #06B6D4;
+      --success: #16a34a;
+      --warning: #f59e0b;
 
-      --r: 18px;
-      --r2: 26px;
-      --max: 1120px;
+      --radius: 16px;
+      --radius-lg: 24px;
+      --max-width: 1120px;
+
+      --shadow-sm: 0 2px 8px rgba(12, 25, 54, .06);
+      --shadow-md: 0 4px 16px rgba(12, 25, 54, .08);
+      --shadow-lg: 0 8px 32px rgba(12, 25, 54, .12);
+      --shadow-glow: 0 0 40px rgba(11, 95, 255, .15);
     }
 
-    *{ box-sizing: border-box; }
-    html,body{ height: 100%; }
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue";
-      color: var(--txt);
-      background:
-        radial-gradient(1100px 700px at 10% -10%, rgba(11,95,255,.18), transparent 55%),
-        radial-gradient(900px 600px at 95% 5%, rgba(6,182,212,.14), transparent 55%),
-        radial-gradient(800px 600px at 50% 110%, rgba(22,163,74,.10), transparent 55%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      overflow-x:hidden;
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    button{ font: inherit; }
-
-    .container{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 18px 16px 110px;
-    }
-
-    /* topo */
-    .topbar{
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(14px);
-      background: linear-gradient(to bottom, rgba(246,249,255,.88), rgba(246,249,255,.55));
-      border-bottom: 1px solid rgba(12, 25, 54, .08);
-    }
-    .topbar-inner{
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 12px 16px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width: 190px;
-    }
-    .logo{
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      display:grid; place-items:center;
-      font-weight: 900;
-      letter-spacing: .5px;
-      color: white;
-      background: linear-gradient(135deg, rgba(11,95,255,1), rgba(6,182,212,1));
-      box-shadow: 0 16px 40px rgba(11,95,255,.22);
-    }
-    .brand-txt{ line-height:1.05; }
-    .brand-txt strong{ display:block; font-size: 1rem; }
-    .brand-txt span{ display:block; font-size: .86rem; color: var(--muted); margin-top: 3px; }
-
-    .nav{
-      display:none;
-      gap: 16px;
-      align-items:center;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-    .nav a{ padding: 8px 10px; border-radius: 999px; }
-    .nav a:hover{ background: rgba(11,95,255,.08); color: rgba(10,22,50,.92); }
-
-    .actions{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-    }
-
-    .btn{
-      border: 1px solid transparent;
-      border-radius: 999px;
-      padding: 12px 14px;
-      cursor:pointer;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      font-weight: 650;
-      letter-spacing: .1px;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .btn:active{ transform: translateY(1px); }
-
-    .btn-primary{
-      background: linear-gradient(135deg, rgba(11,95,255,1), rgba(6,182,212,1));
-      color: white;
-      box-shadow: 0 18px 45px rgba(11,95,255,.20);
-    }
-    .btn-primary:hover{ box-shadow: 0 22px 60px rgba(11,95,255,.26); }
-
-    .btn-ghost{
-      background: rgba(255,255,255,.70);
-      border-color: rgba(12, 25, 54, .10);
-      color: rgba(10,22,50,.92);
-    }
-    .btn-ghost:hover{
-      background: rgba(255,255,255,.92);
-      border-color: rgba(12, 25, 54, .14);
-      box-shadow: 0 12px 30px rgba(12,25,54,.10);
-    }
-
-    .btn-icon{
-      width: 44px; height: 44px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
       padding: 0;
     }
 
-    /* layout */
-    .grid-hero{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .glass{
-      background: linear-gradient(180deg, var(--card2), var(--card));
-      border: 1px solid var(--stroke);
-      box-shadow: var(--shadow);
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--txt);
+      background: 
+        radial-gradient(1200px 800px at 10% -10%, rgba(11,95,255,.12), transparent 60%),
+        radial-gradient(1000px 700px at 95% 5%, rgba(6,182,212,.10), transparent 60%),
+        radial-gradient(900px 700px at 50% 110%, rgba(22,163,74,.08), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    .hero{
-      border-radius: var(--r2);
-      padding: 18px;
-      overflow:hidden;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+
+    /* ==================== ANIMAÇÕES ==================== */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(11, 95, 255, .4);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(11, 95, 255, 0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Classe para elementos com scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==================== CONTAINER E LAYOUT ==================== */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
       position: relative;
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(900px 480px at 10% 20%, rgba(11,95,255,.16), transparent 60%),
-        radial-gradient(700px 420px at 90% 0%, rgba(6,182,212,.12), transparent 55%),
-        radial-gradient(650px 520px at 50% 120%, rgba(22,163,74,.10), transparent 55%);
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      position:relative;
-      display:flex;
-      flex-direction:column;
-      gap: 16px;
-    }
-
-    .kickers{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-    }
-    .pill{
-      display:inline-flex;
-      gap: 8px;
-      align-items:center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(11,95,255,.07);
-      border: 1px solid rgba(11,95,255,.14);
-      color: rgba(10,22,50,.78);
-      font-size: .86rem;
-      white-space:nowrap;
-    }
-    .dot{
-      width: 8px; height:8px;
-      border-radius: 999px;
-      background: var(--ok);
-      box-shadow: 0 0 0 3px rgba(22,163,74,.14);
-    }
-
-    h1{
-      margin: 0;
-      font-size: clamp(1.7rem, 4.2vw, 2.7rem);
-      line-height: 1.05;
-      letter-spacing: -0.6px;
-    }
-    .grad{
-      background: linear-gradient(135deg, rgba(11,95,255,1), rgba(6,182,212,1));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .sub{
-      margin: 0;
-      color: var(--muted);
-      font-size: 1.02rem;
-      line-height: 1.5;
-      max-width: 62ch;
-    }
-
-    .hero-ctas{
-      display:flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items:center;
-    }
-
-    .trust{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-
-    .trust-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-    .trust-row b{ color: rgba(10,22,50,.92); }
-
-    /* card lateral com imagem */
-    .promo{
-      border-radius: var(--r2);
-      overflow:hidden;
-      position: relative;
-      min-height: 260px;
-    }
-    .promo .photo{
-      position:absolute; inset:0;
-      background:
-        linear-gradient(180deg, rgba(246,249,255,.15), rgba(246,249,255,.92)),
-        url("https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1400&q=70") center/cover no-repeat;
-      transform: scale(1.02);
-      filter: saturate(1.05);
-    }
-    .promo .promo-inner{
-      position:relative;
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-      height:100%;
-      justify-content:flex-end;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      width: fit-content;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.75);
-      border: 1px solid rgba(12, 25, 54, .10);
-      color: rgba(10,22,50,.92);
-      font-size: .9rem;
-      font-weight: 650;
-      box-shadow: 0 10px 30px rgba(12,25,54,.10);
-    }
-    .badge svg{ opacity:.95; }
-    .promo h3{
-      margin:0;
-      font-size: 1.25rem;
-      letter-spacing: -0.2px;
-      color: rgba(10,22,50,.95);
-    }
-    .promo p{
-      margin:0;
-      color: rgba(10,22,50,.72);
-      line-height: 1.45;
-      font-size: .95rem;
-    }
-
-    /* seção */
-    .section{
-      margin-top: 26px;
-    }
-    .section-head{
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-      margin: 18px 2px 12px;
-    }
-    .section-head h2{
-      margin:0;
-      font-size: 1.35rem;
-      letter-spacing: -0.3px;
-      color: rgba(10,22,50,.95);
-    }
-    .section-head p{
-      margin:0;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .card{
-      border-radius: var(--r2);
-      padding: 14px;
-      cursor:pointer;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease, box-shadow .15s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      border-color: rgba(11,95,255,.16);
-      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.86));
-      box-shadow: 0 26px 70px rgba(12,25,54,.16);
-    }
-
-    .service{
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-    }
-    .ico{
-      width: 44px; height:44px;
-      border-radius: 14px;
-      display:grid; place-items:center;
-      background: rgba(11,95,255,.08);
-      border: 1px solid rgba(11,95,255,.14);
-      flex: 0 0 auto;
-    }
-    .service h3{
-      margin:0;
-      font-size: 1.05rem;
-      letter-spacing: -0.2px;
-      color: rgba(10,22,50,.95);
-    }
-    .service p{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-size: .95rem;
-      line-height: 1.4;
-    }
-    .meta{
-      margin-left:auto;
-      text-align:right;
-      display:flex;
-      flex-direction:column;
-      gap: 2px;
-      align-items:flex-end;
-      flex: 0 0 auto;
-    }
-    .price{
-      font-weight: 850;
-      color: rgba(10,22,50,.92);
-      letter-spacing: -0.2px;
-    }
-    .tag{
-      font-size:.82rem;
-      color: rgba(10,22,50,.72);
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(11,95,255,.07);
-      border: 1px solid rgba(11,95,255,.12);
-    }
-
-    /* tabela */
-    .pricing{
-      border-radius: var(--r2);
       overflow: hidden;
     }
 
-    /* Desktop: tabela normal */
-    .pricing table{
-      width: 100%;
-      border-collapse: collapse;
-      display: table;
-    }
-    .pricing thead th{
-      text-align: left;
-      font-size: .9rem;
-      color: rgba(10,22,50,.78);
-      padding: 12px 14px;
-      background: rgba(11,95,255,.06);
-      border-bottom: 1px solid rgba(12, 25, 54, .10);
-    }
-    .pricing tbody td{
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(12, 25, 54, .08);
-      color: rgba(10,22,50,.88);
-      vertical-align: top;
-      line-height: 1.35;
-      background: rgba(255,255,255,.88);
-    }
-    .pricing tbody tr{
-      cursor: pointer;
-      transition: all .2s ease;
-    }
-    .pricing tbody tr:hover td{
-      background: rgba(11,95,255,.05);
-    }
-    .pricing .muted{
-      color: rgba(10,22,50,.66);
-      font-size: .92rem;
-    }
-    .pricing .click{
-      color: rgba(11,95,255,.95);
-      font-weight: 750;
+    .hero-content {
+      max-width: 720px;
+      animation: fadeIn 1s ease-out;
     }
 
-    /* Mobile: transformar em cards */
-    @media (max-width: 768px) {
-      .pricing {
-        background: transparent;
-        overflow: visible;
-      }
-
-      .pricing table {
-        display: block;
-        width: 100%;
-      }
-
-      .pricing thead {
-        display: none;
-      }
-
-      .pricing tbody {
-        display: block;
-      }
-
-      .pricing tbody tr {
-        display: flex;
-        flex-direction: column;
-        background: rgba(255,255,255,.88);
-        border-radius: var(--r);
-        margin-bottom: 12px;
-        padding: 16px;
-        border: 1px solid rgba(12, 25, 54, .08);
-        box-shadow: 0 2px 8px rgba(12, 25, 54, .06);
-      }
-
-      .pricing tbody tr:hover {
-        background: rgba(255,255,255,.95);
-        box-shadow: 0 4px 12px rgba(11,95,255,.12);
-      }
-
-      .pricing tbody td {
-        display: block;
-        padding: 0;
-        border: none;
-        background: transparent !important;
-        margin-bottom: 8px;
-      }
-
-      .pricing tbody td:last-child {
-        margin-bottom: 0;
-        text-align: center;
-        padding-top: 8px;
-        border-top: 1px solid rgba(12, 25, 54, .08);
-        margin-top: 8px;
-      }
-
-      /* Adicionar labels antes de cada informação no mobile */
-      .pricing tbody td:nth-child(1)::before {
-        content: "";
-        display: block;
-        font-size: .75rem;
-        color: rgba(10,22,50,.5);
-        text-transform: uppercase;
-        letter-spacing: .5px;
-        margin-bottom: 4px;
-      }
-
-      .pricing tbody td:nth-child(2) {
-        font-size: 1.3rem;
-        color: var(--brand);
-        margin-bottom: 12px;
-      }
-
-      .pricing tbody td:nth-child(2)::before {
-        content: "Valor";
-        display: block;
-        font-size: .75rem;
-        color: rgba(10,22,50,.5);
-        text-transform: uppercase;
-        letter-spacing: .5px;
-        margin-bottom: 4px;
-        font-weight: normal;
-      }
-
-      .pricing tbody td:nth-child(3)::before {
-        content: "Ideal para";
-        display: block;
-        font-size: .75rem;
-        color: rgba(10,22,50,.5);
-        text-transform: uppercase;
-        letter-spacing: .5px;
-        margin-bottom: 4px;
-      }
-
-      .pricing tbody td:nth-child(3) {
-        margin-bottom: 12px;
-      }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      font-size: .875rem;
+      color: var(--txt-light);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
     }
 
-    
-    /* como funciona */
-    .steps{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
+    .hero-badge::before {
+      content: "✨";
     }
-    .step{
-      border-radius: var(--r2);
-      padding: 14px;
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-    }
-    .num{
-      width: 42px; height:42px;
-      border-radius: 14px;
-      display:grid; place-items:center;
-      font-weight: 900;
-      background: rgba(11,95,255,.08);
-      border: 1px solid rgba(11,95,255,.14);
-      color: rgba(10,22,50,.92);
-      flex: 0 0 auto;
-    }
-    .step h4{ margin: 0; font-size: 1rem; color: rgba(10,22,50,.95); }
-    .step p{ margin: 6px 0 0; color: var(--muted); line-height: 1.45; }
 
-    /* FAQ */
-    details{
-      border-radius: var(--r2);
-      padding: 14px;
-    }
-    details + details{ margin-top: 10px; }
-    summary{
-      cursor:pointer;
-      list-style:none;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
       font-weight: 800;
-      color: rgba(10,22,50,.92);
-    }
-    summary::-webkit-details-marker{ display:none; }
-    .chev{
-      width: 18px; height:18px;
-      opacity: .85;
-      transition: transform .18s ease;
-      flex: 0 0 auto;
-    }
-    details[open] .chev{ transform: rotate(180deg); }
-    .faq-body{
-      margin-top: 10px;
-      color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    /* CTA final */
-    .cta{
-      margin-top: 24px;
-      border-radius: var(--r2);
-      padding: 16px;
-      display:flex;
-      flex-direction:column;
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      color: var(--txt-light);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
       gap: 12px;
-      background: linear-gradient(135deg, rgba(11,95,255,.08), rgba(6,182,212,.06));
+      padding: 18px 40px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      animation: pulse 2s infinite;
     }
-    .cta h3{ margin:0; font-size: 1.2rem; letter-spacing: -0.2px; color: rgba(10,22,50,.95); }
-    .cta p{ margin:0; color: var(--muted); line-height: 1.45; }
 
-    /* footer */
-    footer{
-      margin-top: 22px;
-      padding: 10px 2px 0;
-      color: rgba(10,22,50,.60);
+    .hero-cta:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(11, 95, 255, .25);
+    }
+
+    .hero-cta:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .hero-cta::after {
+      content: "→";
+      font-size: 1.3rem;
+    }
+
+    /* ==================== SERVICES CARDS ==================== */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .service-card {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: rgba(11, 95, 255, .2);
+    }
+
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius);
+      background: linear-gradient(135deg, rgba(11, 95, 255, .1), rgba(6, 182, 212, .1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      transition: all .3s ease;
+    }
+
+    .service-card:hover .service-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: var(--txt);
+    }
+
+    .service-card p {
+      color: var(--txt-light);
+      font-size: .95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .service-tag {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(11, 95, 255, .08);
+      color: var(--brand);
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    /* ==================== SECTION HEADERS ==================== */
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 60px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--txt);
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: var(--txt-light);
+    }
+
+    /* ==================== PRICING CARDS (MOBILE-FIRST) ==================== */
+    .pricing-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .pricing-card {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(11, 95, 255, .15);
+    }
+
+    .pricing-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .pricing-service h4 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+      color: var(--txt);
+    }
+
+    .pricing-service .subtitle {
       font-size: .9rem;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      align-items:center;
-      justify-content:space-between;
-    }
-    .footer-links{
-      display:flex;
-      gap: 10px;
-      align-items:center;
-    }
-    .footer-links a{
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.80);
-      border: 1px solid rgba(12, 25, 54, .10);
-      color: rgba(10,22,50,.78);
-    }
-    .footer-links a:hover{ background: rgba(255,255,255,.95); }
-
-    /* botão flutuante */
-    .fab{
-      position: fixed;
-      right: 16px;
-      bottom: 16px;
-      z-index: 30;
-      border-radius: 999px;
-      padding: 12px 14px;
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      background: #25D366;
-      color: #0b1220;
-      font-weight: 900;
-      border: 0;
-      box-shadow: 0 18px 55px rgba(12,25,54,.18);
-      cursor:pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .fab small{
-      display:block;
-      font-weight: 750;
-      opacity:.78;
-      font-size: .78rem;
-      margin-top: 1px;
-    }
-    .fab .wicon{
-      width: 22px; height: 22px;
-      flex: 0 0 auto;
+      color: var(--txt-light);
     }
 
-    /* toast */
-    .toast{
-      position: fixed;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 86px;
-      z-index: 40;
-      max-width: calc(100% - 28px);
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(12, 25, 54, .10);
-      color: rgba(10,22,50,.90);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 18px 60px rgba(12,25,54,.12);
-      font-size: .92rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .toast.on{
-      opacity: 1;
-      transform: translateX(-50%) translateY(-4px);
+    .pricing-value {
+      text-align: right;
+      flex-shrink: 0;
     }
 
-    /* responsivo (desktop) */
-    @media (min-width: 860px){
-      .nav{ display:flex; }
-      .grid-hero{
-        grid-template-columns: 1.2fr .8fr;
-        align-items: stretch;
-      }
-      .cards{
+    .pricing-value .price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--brand);
+      display: block;
+    }
+
+    .pricing-value .label {
+      font-size: .75rem;
+      color: var(--txt-light);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .pricing-description {
+      padding: 16px 0;
+      border-top: 1px solid var(--stroke);
+      border-bottom: 1px solid var(--stroke);
+    }
+
+    .pricing-description .label {
+      font-size: .75rem;
+      color: var(--txt-light);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .pricing-description p {
+      color: var(--txt);
+      font-size: .95rem;
+    }
+
+    .pricing-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: white;
+      font-weight: 700;
+      border-radius: var(--radius);
+      transition: all .3s ease;
+    }
+
+    .pricing-cta:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pricing-cta::after {
+      content: "→";
+      font-size: 1.2rem;
+    }
+
+    /* Desktop: 2 columns */
+    @media (min-width: 768px) {
+      .pricing-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
       }
-      .steps{
+    }
+
+    /* ==================== HOW IT WORKS ==================== */
+    .steps {
+      display: grid;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .step {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      box-shadow: var(--shadow-sm);
+      transition: all .3s ease;
+    }
+
+    .step:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(8px);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-md);
+    }
+
+    .step-content h4 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: var(--txt);
+    }
+
+    .step-content p {
+      color: var(--txt-light);
+      line-height: 1.6;
+    }
+
+    @media (min-width: 768px) {
+      .steps {
         grid-template-columns: repeat(3, 1fr);
       }
-      .cta{
-        flex-direction: row;
-        align-items:center;
-        justify-content:space-between;
+
+      .step {
+        flex-direction: column;
+        text-align: center;
       }
-      .cta .cta-actions{
-        display:flex;
-        gap: 10px;
-        align-items:center;
+
+      .step:hover {
+        transform: translateY(-8px);
       }
+    }
+
+    /* ==================== FAQ ACCORDION ==================== */
+    .faq-list {
+      max-width: 800px;
+      margin: 40px auto 0;
+    }
+
+    .faq-item {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+      transition: all .3s ease;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--txt);
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: all .2s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--brand);
+    }
+
+    .faq-question::after {
+      content: "+";
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--brand);
+      transition: transform .3s ease;
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding: 0 24px 20px;
+    }
+
+    .faq-answer p {
+      color: var(--txt-light);
+      line-height: 1.7;
+    }
+
+    /* ==================== STICKY CTA (Mobile) ==================== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, .95);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--stroke);
+      box-shadow: 0 -4px 16px rgba(12, 25, 54, .08);
+      z-index: 1000;
+      animation: slideUp .3s ease-out;
+    }
+
+    .sticky-cta.visible {
+      display: block;
+    }
+
+    .sticky-cta button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .sticky-cta button::after {
+      content: "→";
+      font-size: 1.3rem;
+    }
+
+    @media (min-width: 769px) {
+      .sticky-cta {
+        display: none !important;
+      }
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      padding: 60px 0 40px;
+      text-align: center;
+      border-top: 1px solid var(--stroke);
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer h3 {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      color: var(--txt);
+    }
+
+    .footer p {
+      color: var(--txt-light);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-light));
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      transition: all .3s ease;
+      margin-bottom: 40px;
+    }
+
+    .footer-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(11, 95, 255, .25);
+    }
+
+    .footer-cta::before {
+      content: "💬";
+      font-size: 1.3rem;
+    }
+
+    .footer-meta {
+      padding-top: 32px;
+      border-top: 1px solid var(--stroke);
+      color: var(--txt-light);
+      font-size: .9rem;
+    }
+
+    /* ==================== UTILITY CLASSES ==================== */
+    .glass {
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--stroke);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   </style>
 </head>
-
 <body>
-  <div class="topbar" id="top">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="logo">YT</div>
-        <div class="brand-txt">
-          <strong>Yann Tech</strong>
-          <span>Serviços de TI • Atendimento rápido</span>
-        </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge reveal">Soluções profissionais em TI</div>
+      <h1 class="reveal">Transforme suas necessidades de TI em realidade</h1>
+      <p class="hero-subtitle reveal">Formatação, Office, sites e softwares sob medida. Atendimento rápido e profissional via WhatsApp.</p>
+      <a href="https://wa.me/5583991368815?text=Olá!%20Preciso%20de%20ajuda%20com%20serviços%20de%20TI" class="hero-cta reveal">
+        Falar no WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Nossos Serviços</h2>
+        <p>Soluções completas para suas necessidades de tecnologia</p>
       </div>
 
-      <nav class="nav">
-        <a href="#servicos">Serviços</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#faq">Dúvidas</a>
-      </nav>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">💻</div>
+          <h3>Formatação</h3>
+          <p>Windows limpo, drivers atualizados, otimização completa do sistema e remoção de programas indesejados.</p>
+          <span class="service-tag">R$ 90,00</span>
+        </div>
 
-      <div class="actions">
-        <button class="btn btn-ghost btn-icon" id="btnCopy" title="Copiar mensagem">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M8 7a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-6a3 3 0 0 1-3-3V7Z" stroke="currentColor" stroke-width="2"/>
-            <path d="M8 8H7a3 3 0 0 0-3 3v6a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-1" stroke="currentColor" stroke-width="2" opacity=".75"/>
-          </svg>
-        </button>
-        <button class="btn btn-primary" id="btnWhatsTop">
-          Falar no WhatsApp
-          <span aria-hidden="true">→</span>
-        </button>
+        <div class="service-card reveal">
+          <div class="service-icon">📊</div>
+          <h3>Pacote Office</h3>
+          <p>Instalação e configuração completa do Office. Word, Excel e PowerPoint prontos para usar.</p>
+          <span class="service-tag">R$ 30,00</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🌐</div>
+          <h3>Criação de Sites</h3>
+          <p>Landing pages, portfólios e sites institucionais responsivos e modernos.</p>
+          <span class="service-tag">Sob consulta</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⚙️</div>
+          <h3>Desenvolvimento de Software</h3>
+          <p>Automações, apps internos e soluções personalizadas para o seu negócio.</p>
+          <span class="service-tag">Sob consulta</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🎮</div>
+          <h3>Jogos Simples</h3>
+          <p>Protótipos, MVPs e jogos educativos desenvolvidos sob demanda.</p>
+          <span class="service-tag">Sob consulta</span>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">✨</div>
+          <h3>Outros Serviços</h3>
+          <p>Consultoria, suporte técnico, manutenção e outras necessidades em TI.</p>
+          <span class="service-tag">A combinar</span>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <main class="container">
-    <section class="grid-hero">
-      <div class="hero glass">
-        <div class="hero-inner">
-          <div class="kickers">
-            <span class="pill"><span class="dot"></span> Resposta rápida</span>
-            <span class="pill">Orçamento direto no Whats</span>
-            <span class="pill">Atendimento remoto/presencial*</span>
-          </div>
+  <!-- PRICING SECTION -->
+  <section class="section" id="precos" style="background: rgba(11, 95, 255, .02);">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Preços Transparentes</h2>
+        <p>Valores fixos para serviços rápidos, orçamento personalizado para projetos</p>
+      </div>
 
-          <h1>
-            Serviços de TI <span class="grad">de forma profissional</span>.
-          </h1>
-
-          <p class="sub">
-            Se você precisa formatar o PC, instalar Office ou tirar um projeto do papel (site/software),
-            me chama no WhatsApp e eu já te direciono com os próximos passos.
-          </p>
-
-          <div class="hero-ctas">
-            <button class="btn btn-primary" id="btnWhatsHero">
-              Chamar agora
-              <span aria-hidden="true">✦</span>
-            </button>
-            <button class="btn btn-ghost" id="btnServices">
-              Ver serviços
-              <span aria-hidden="true">↓</span>
-            </button>
-          </div>
-
-          <div class="trust">
-            <div class="trust-row">
-              <span class="pill" style="background: rgba(22,163,74,.10); border-color: rgba(22,163,74,.18); color: rgba(10,22,50,.82);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Sem enrolação
-              </span>
-              <span class="pill" style="background: rgba(6,182,212,.10); border-color: rgba(6,182,212,.18); color: rgba(10,22,50,.82);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                Atendimento seguro
-              </span>
-              <span class="pill" style="background: rgba(245,158,11,.12); border-color: rgba(245,158,11,.20); color: rgba(10,22,50,.82);">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z" stroke="currentColor" stroke-width="2"/>
-                </svg>
-                Agilidade
-              </span>
+      <div class="pricing-grid">
+        <div class="pricing-card reveal" onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Gostaria%20de%20contratar:%20Formatação%20-%20R$%2090,00', '_blank')">
+          <div class="pricing-header">
+            <div class="pricing-service">
+              <h4>Formatação</h4>
+              <span class="subtitle">Windows limpo + otimização</span>
             </div>
-
-            <div class="trust-row">
-              <span>💡 <b>Dica:</b> clique em um serviço abaixo e eu já abro o WhatsApp com a mensagem pronta.</span>
+            <div class="pricing-value">
+              <span class="price">R$ 90</span>
+              <span class="label">Valor fixo</span>
             </div>
           </div>
+          <div class="pricing-description">
+            <span class="label">Ideal para</span>
+            <p>PC lento, travando ou "cheio de coisa"</p>
+          </div>
+          <button class="pricing-cta">Contratar agora</button>
+        </div>
+
+        <div class="pricing-card reveal" onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Gostaria%20de%20contratar:%20Instalação%20Office%20-%20R$%2030,00', '_blank')">
+          <div class="pricing-header">
+            <div class="pricing-service">
+              <h4>Pacote Office</h4>
+              <span class="subtitle">Instalação + configuração</span>
+            </div>
+            <div class="pricing-value">
+              <span class="price">R$ 30</span>
+              <span class="label">Valor fixo</span>
+            </div>
+          </div>
+          <div class="pricing-description">
+            <span class="label">Ideal para</span>
+            <p>Word, Excel e PowerPoint prontos para usar</p>
+          </div>
+          <button class="pricing-cta">Contratar agora</button>
+        </div>
+
+        <div class="pricing-card reveal" onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Gostaria%20de%20um%20orçamento%20para:%20Criação%20de%20Site', '_blank')">
+          <div class="pricing-header">
+            <div class="pricing-service">
+              <h4>Sites</h4>
+              <span class="subtitle">Landing page / Institucional</span>
+            </div>
+            <div class="pricing-value">
+              <span class="price">A combinar</span>
+              <span class="label">Orçamento</span>
+            </div>
+          </div>
+          <div class="pricing-description">
+            <span class="label">Ideal para</span>
+            <p>Empresas, profissionais autônomos e negócios locais</p>
+          </div>
+          <button class="pricing-cta">Solicitar orçamento</button>
+        </div>
+
+        <div class="pricing-card reveal" onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Gostaria%20de%20um%20orçamento%20para:%20Desenvolvimento%20de%20Software', '_blank')">
+          <div class="pricing-header">
+            <div class="pricing-service">
+              <h4>Softwares</h4>
+              <span class="subtitle">Automação / Sob medida</span>
+            </div>
+            <div class="pricing-value">
+              <span class="price">A combinar</span>
+              <span class="label">Orçamento</span>
+            </div>
+          </div>
+          <div class="pricing-description">
+            <span class="label">Ideal para</span>
+            <p>Processos repetitivos, apps internos e integrações</p>
+          </div>
+          <button class="pricing-cta">Solicitar orçamento</button>
+        </div>
+
+        <div class="pricing-card reveal" onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Gostaria%20de%20um%20orçamento%20para:%20Criação%20de%20Jogo', '_blank')">
+          <div class="pricing-header">
+            <div class="pricing-service">
+              <h4>Jogos Simples</h4>
+              <span class="subtitle">Protótipos e ideias</span>
+            </div>
+            <div class="pricing-value">
+              <span class="price">A combinar</span>
+              <span class="label">Orçamento</span>
+            </div>
+          </div>
+          <div class="pricing-description">
+            <span class="label">Ideal para</span>
+            <p>MVPs, demos e projetos educacionais</p>
+          </div>
+          <button class="pricing-cta">Solicitar orçamento</button>
+        </div>
+
+        <div class="pricing-card reveal" onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Gostaria%20de%20falar%20sobre:%20Outros%20Serviços%20de%20TI', '_blank')">
+          <div class="pricing-header">
+            <div class="pricing-service">
+              <h4>Outros Serviços</h4>
+              <span class="subtitle">Consultoria e suporte</span>
+            </div>
+            <div class="pricing-value">
+              <span class="price">A combinar</span>
+              <span class="label">Orçamento</span>
+            </div>
+          </div>
+          <div class="pricing-description">
+            <span class="label">Ideal para</span>
+            <p>Necessidades específicas em tecnologia</p>
+          </div>
+          <button class="pricing-cta">Falar no WhatsApp</button>
         </div>
       </div>
+    </div>
+  </section>
 
-      <aside class="promo glass">
-        <div class="photo" aria-hidden="true"></div>
-        <div class="promo-inner">
-          <span class="badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M13 2 3 14h7l-1 8 12-14h-7l-1-6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-            Atendimento rápido
-          </span>
-          <h3>Primeiro contato e diagnóstico</h3>
-          <p>
-            Você explica sua necessidade no WhatsApp e eu te retorno com solução + preço + prazo.
-          </p>
-        </div>
-      </aside>
-    </section>
-
-    <section id="servicos" class="section">
-      <div class="section-head">
-        <h2>Serviços</h2>
-        <p>Preços claros no que é fixo e “A combinar” para projetos sob demanda.</p>
-      </div>
-
-      <div class="cards">
-        <div class="card glass service" data-service="Formatação" data-price="R$ 90,00" data-desc="Windows limpo, drivers, ajustes e otimização.">
-          <div class="ico" aria-hidden="true">🧰</div>
-          <div>
-            <h3>Formatação</h3>
-            <p>Windows limpo, drivers, ajustes e otimização.</p>
-          </div>
-          <div class="meta">
-            <div class="price">R$ 90,00</div>
-            <div class="tag">preço fixo</div>
-          </div>
-        </div>
-
-        <div class="card glass service" data-service="Instalação de pacote Office" data-price="R$ 30,00" data-desc="Instalação e configuração, validação de funcionamento.">
-          <div class="ico" aria-hidden="true">📄</div>
-          <div>
-            <h3>Instalação de pacote Office</h3>
-            <p>Instalação e configuração, validação de funcionamento.</p>
-          </div>
-          <div class="meta">
-            <div class="price">R$ 30,00</div>
-            <div class="tag">preço fixo</div>
-          </div>
-        </div>
-
-        <div class="card glass service" data-service="Criação de jogos simples" data-price="A combinar" data-desc="Protótipos e jogos básicos sob demanda.">
-          <div class="ico" aria-hidden="true">🎮</div>
-          <div>
-            <h3>Criação de jogos simples</h3>
-            <p>Protótipos e jogos básicos sob demanda.</p>
-          </div>
-          <div class="meta">
-            <div class="price">A combinar</div>
-            <div class="tag">sob demanda</div>
-          </div>
-        </div>
-
-        <div class="card glass service" data-service="Criação de sites" data-price="A combinar" data-desc="Landing page, portfólio, site institucional responsivo.">
-          <div class="ico" aria-hidden="true">🌐</div>
-          <div>
-            <h3>Criação de sites</h3>
-            <p>Landing page, portfólio, site institucional responsivo.</p>
-          </div>
-          <div class="meta">
-            <div class="price">A combinar</div>
-            <div class="tag">sob demanda</div>
-          </div>
-        </div>
-
-        <div class="card glass service" data-service="Criação de softwares" data-price="A combinar" data-desc="Automação, apps internos e soluções sob medida.">
-          <div class="ico" aria-hidden="true">⚙️</div>
-          <div>
-            <h3>Criação de softwares</h3>
-            <p>Automação, apps internos e soluções sob medida.</p>
-          </div>
-          <div class="meta">
-            <div class="price">A combinar</div>
-            <div class="tag">sob demanda</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <h2>Tabela rápida</h2>
-        <p>Para facilitar a decisão no celular, bem no estilo “site de serviço”.</p>
-      </div>
-
-      <div class="pricing glass">
-        <table>
-          <thead>
-            <tr>
-              <th>Serviço</th>
-              <th>Valor</th>
-              <th>Ideal para</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-service="Formatação" data-price="R$ 90,00">
-              <td><b>Formatação</b><div class="muted">Windows limpo + otimização</div></td>
-              <td><b>R$ 90,00</b></td>
-              <td class="muted">PC lento, travando, “cheio de coisa”</td>
-              <td class="click">Clique →</td>
-            </tr>
-            <tr data-service="Instalação de pacote Office" data-price="R$ 30,00">
-              <td><b>Office</b><div class="muted">Instalação + configuração</div></td>
-              <td><b>R$ 30,00</b></td>
-              <td class="muted">Word/Excel/PowerPoint prontos</td>
-              <td class="click">Clique →</td>
-            </tr>
-            <tr data-service="Criação de sites" data-price="A combinar">
-              <td><b>Sites</b><div class="muted">Landing/institucional</div></td>
-              <td><b>A combinar</b></td>
-              <td class="muted">Primeiro contato com cliente</td>
-              <td class="click">Clique →</td>
-            </tr>
-            <tr data-service="Criação de softwares" data-price="A combinar">
-              <td><b>Softwares</b><div class="muted">Automação/sob medida</div></td>
-              <td><b>A combinar</b></td>
-              <td class="muted">Processos repetitivos / app interno</td>
-              <td class="click">Clique →</td>
-            </tr>
-            <tr data-service="Criação de jogos simples" data-price="A combinar">
-              <td><b>Jogos simples</b><div class="muted">Protótipos e ideias</div></td>
-              <td><b>A combinar</b></td>
-              <td class="muted">MVP / aprendizado / demo</td>
-              <td class="click">Clique →</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section id="como-funciona" class="section">
-      <div class="section-head">
-        <h2>Como funciona</h2>
-        <p>Fluxo simples, padrão de prestação de serviço.</p>
+  <!-- HOW IT WORKS -->
+  <section class="section" id="como-funciona">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Como Funciona</h2>
+        <p>Processo simples e transparente do início ao fim</p>
       </div>
 
       <div class="steps">
-        <div class="step glass">
-          <div class="num">1</div>
-          <div>
-            <h4>Você chama no WhatsApp</h4>
-            <p>Já mando uma mensagem pronta (ou você descreve do seu jeito).</p>
+        <div class="step reveal">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Você entra em contato</h4>
+            <p>Clique em qualquer botão para abrir o WhatsApp com mensagem pronta, ou descreva sua necessidade.</p>
           </div>
         </div>
 
-        <div class="step glass">
-          <div class="num">2</div>
-          <div>
-            <h4>Diagnóstico e alinhamento</h4>
-            <p>Entendo a necessidade, confirmo valor e estimativa de entrega.</p>
+        <div class="step reveal">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Alinhamento</h4>
+            <p>Entendo sua necessidade, confirmo valor e estimativa de entrega. Tudo alinhado antes de começar.</p>
           </div>
         </div>
 
-        <div class="step glass">
-          <div class="num">3</div>
-          <div>
+        <div class="step reveal">
+          <div class="step-number">3</div>
+          <div class="step-content">
             <h4>Execução</h4>
-            <p>Realizo o serviço e te mantenho atualizado no WhatsApp.</p>
+            <p>Realizo o serviço com qualidade e te mantenho atualizado durante todo o processo pelo WhatsApp.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="faq" class="section">
-      <div class="section-head">
-        <h2>Dúvidas rápidas</h2>
-        <p>Respostas curtas, sem texto desnecessário.</p>
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Dúvidas Frequentes</h2>
+        <p>Respostas rápidas para as principais perguntas</p>
       </div>
 
-      <details class="glass">
-        <summary>
-          Você atende só presencial?
-          <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </summary>
-        <div class="faq-body">
-          Posso atender remoto em vários casos. Se for necessário presencial, eu te aviso no primeiro contato.
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question">Você atende só presencial?</button>
+          <div class="faq-answer">
+            <p>Não! Para formatação e instalações, atendo presencialmente em Campina Grande. Para sites, softwares e jogos, trabalho 100% remoto, atendendo clientes de qualquer lugar do Brasil.</p>
+          </div>
         </div>
-      </details>
 
-      <details class="glass">
-        <summary>
-          Quanto tempo leva uma formatação?
-          <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </summary>
-        <div class="faq-body">
-          Depende do equipamento e do que precisa instalar. No WhatsApp eu confirmo a estimativa com você.
+        <div class="faq-item reveal">
+          <button class="faq-question">Quanto tempo leva uma formatação?</button>
+          <div class="faq-answer">
+            <p>Em média, 2 a 4 horas. Depende do estado do PC e da velocidade da internet para downloads. Costumo agendar e devolver no mesmo dia ou no dia seguinte.</p>
+          </div>
         </div>
-      </details>
 
-      <details class="glass">
-        <summary>
-          Como funciona “A combinar”?
-          <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          </svg>
-        </summary>
-        <div class="faq-body">
-          Projetos variam muito. Você manda o que precisa e eu retorno com valor + prazo.
+        <div class="faq-item reveal">
+          <button class="faq-question">Como funciona "A combinar"?</button>
+          <div class="faq-answer">
+            <p>Para projetos personalizados (sites, softwares, jogos), o valor varia conforme a complexidade. Me chame no WhatsApp, descreva sua necessidade e faço um orçamento personalizado sem compromisso.</p>
+          </div>
         </div>
-      </details>
-    </section>
 
-    <section class="cta glass">
-      <div>
-        <h3>Pronto pra resolver?</h3>
-        <p>Um clique e você já abre a conversa com mensagem pronta.</p>
+        <div class="faq-item reveal">
+          <button class="faq-question">Qual a forma de pagamento?</button>
+          <div class="faq-answer">
+            <p>Aceito Pix, dinheiro e transferência bancária. Para projetos maiores, trabalho com sinal + parcelamento. Tudo combinado antes de começar.</p>
+          </div>
+        </div>
       </div>
-      <div class="cta-actions">
-        <button class="btn btn-primary" id="btnWhatsBottom">Chamar no WhatsApp →</button>
-        <button class="btn btn-ghost" id="btnCopy2">Copiar mensagem</button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content reveal">
+        <h3>Pronto para resolver?</h3>
+        <p>Um clique e você já abre a conversa com mensagem pronta. Respondo rápido!</p>
+        <a href="https://wa.me/5583991368815?text=Olá!%20Preciso%20de%20ajuda%20com%20serviços%20de%20TI" class="footer-cta">
+          Falar no WhatsApp
+        </a>
+        <div class="footer-meta">
+          © 2026 Yann Tech • Serviços Profissionais de TI
+        </div>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <footer>
-      <span>© <span id="year"></span> Yann Tech</span>
-      <div class="footer-links">
-        <a href="#top">Topo</a>
-        <a href="#servicos">Serviços</a>
-      </div>
-    </footer>
-  </main>
+  <!-- STICKY CTA (Mobile only) -->
+  <div class="sticky-cta" id="stickyCta">
+    <button onclick="window.open('https://wa.me/5583991368815?text=Olá!%20Preciso%20de%20ajuda%20com%20serviços%20de%20TI', '_blank')">
+      💬 Falar no WhatsApp
+    </button>
+  </div>
 
-  <button class="fab" id="fabWhats" aria-label="Falar no WhatsApp">
-    <svg class="wicon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M20 11.8a8 8 0 0 1-12.9 6.3L4 19l.9-3.1A8 8 0 1 1 20 11.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-      <path d="M9.2 9.2c.2-.6.5-.7.9-.7h.6c.2 0 .4 0 .5.3l.8 1.9c.1.2 0 .5-.1.6l-.5.6c-.1.1-.1.3 0 .5.4.8 1.4 1.7 2.2 2.1.2.1.4.1.5 0l.6-.5c.2-.1.4-.2.6-.1l2 .8c.2.1.3.3.3.5v.6c0 .4-.1.7-.7.9-.6.2-1.8.3-3.7-.7-1.9-1-3.5-2.6-4.6-4.4-1.1-1.8-1-3-.8-3.6Z" fill="currentColor" opacity=".9"/>
-    </svg>
-    WhatsApp
-    <small>toque para chamar</small>
-  </button>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+  <!-- JAVASCRIPT -->
   <script>
-    // =========================
-    // CONFIG (troque aqui)
-    // =========================
-    const PHONE = "5583991368815"; 
-    const BASE_MSG = "Olá! Vi o site da Yann Tech e gostaria de um orçamento. Meu pedido é:";
+    // ==================== SCROLL REVEAL ANIMATION ====================
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-    function openWhats(message = BASE_MSG) {
-      const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank", "noopener,noreferrer");
-    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
 
-    function toast(msg){
-      const el = document.getElementById("toast");
-      el.textContent = msg;
-      el.classList.add("on");
-      window.clearTimeout(window.__t);
-      window.__t = window.setTimeout(() => el.classList.remove("on"), 1800);
-    }
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    async function copyText(text){
-      try{
-        await navigator.clipboard.writeText(text);
-        toast("Mensagem copiada ✅");
-      }catch(e){
-        const t = document.createElement("textarea");
-        t.value = text;
-        document.body.appendChild(t);
-        t.select();
-        document.execCommand("copy");
-        document.body.removeChild(t);
-        toast("Mensagem copiada ✅");
+    // ==================== FAQ ACCORDION ====================
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Fechar todos
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+        // Abrir o clicado (se não estava ativo)
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // ==================== STICKY CTA (Mobile) ====================
+    const stickyCta = document.getElementById('stickyCta');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function updateStickyCta() {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Mostrar após scroll de 300px e esconder quando chegar ao footer
+      if (scrollY > 300 && scrollY < documentHeight - windowHeight - 400) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
       }
+
+      lastScrollY = scrollY;
+      ticking = false;
     }
 
-    document.getElementById("btnWhatsTop").addEventListener("click", () => openWhats());
-    document.getElementById("btnWhatsHero").addEventListener("click", () => openWhats());
-    document.getElementById("btnWhatsBottom").addEventListener("click", () => openWhats());
-    document.getElementById("fabWhats").addEventListener("click", () => openWhats());
-
-    document.getElementById("btnCopy").addEventListener("click", () => copyText(BASE_MSG));
-    document.getElementById("btnCopy2").addEventListener("click", () => copyText(BASE_MSG));
-
-    document.getElementById("btnServices").addEventListener("click", () => {
-      document.getElementById("servicos").scrollIntoView({ behavior: "smooth", block: "start" });
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateStickyCta();
+        });
+        ticking = true;
+      }
     });
 
-    document.querySelectorAll(".service").forEach(card => {
-      card.addEventListener("click", () => {
-        const s = card.getAttribute("data-service") || "Serviço";
-        const p = card.getAttribute("data-price") || "";
-        const d = card.getAttribute("data-desc") || "";
-        const msg = `Olá! Tenho interesse em: ${s} (${p}).\n\nDetalhes: ${d}\n\nPode me passar prazo e o que você precisa de mim?`;
-        openWhats(msg);
+    // ==================== SMOOTH SCROLL ====================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
-
-    document.querySelectorAll(".pricing tbody tr").forEach(row => {
-      row.style.cursor = "pointer";
-      row.addEventListener("click", () => {
-        const s = row.getAttribute("data-service") || "Serviço";
-        const p = row.getAttribute("data-price") || "";
-        const msg = `Olá! Quero orçamento para: ${s} (${p}).\n\nPode me orientar os próximos passos?`;
-        openWhats(msg);
-      });
-    });
-
-    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
+
 </body>
 </html>
